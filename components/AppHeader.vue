@@ -18,7 +18,6 @@ onMounted(() => {
           <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Logofolio</li>
           <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Clients</li>
           <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">About</li>
-          <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Contact</li>
         </ul>
       </div>
     </div>
