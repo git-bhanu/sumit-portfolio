@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { $gsap } = useNuxtApp()
+const { $gsap } = useNuxtApp();
+
+const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation());
 
 onMounted(() => {
   $gsap.fromTo('nav', { y: -50, visibility: 'hidden' }, { y: 0, visibility: 'visible', duration: 0.1, transition: "power1.in" })
@@ -14,10 +16,15 @@ onMounted(() => {
       </span>
       <div class="ml-14">
         <ul class="flex items-center">
-          <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Projects</li>
-          <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Logofolio</li>
-          <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">Clients</li>
-          <li class="ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 text-gray-400 cursor-pointer hover:text-gray-900">About</li>
+          <li :class="[
+              'ease-in duration-100 text-lg uppercase font-bold m-0 mr-6 cursor-pointer hover:text-gray-700',
+              $route.path === navItem._path ? 'text-gray-900' : 'text-gray-400'
+          ]"
+              v-for="navItem of navigation">
+            <NuxtLink :to="navItem._path">
+            {{ navItem.title }}
+            </NuxtLink>
+          </li>
         </ul>
       </div>
     </div>
